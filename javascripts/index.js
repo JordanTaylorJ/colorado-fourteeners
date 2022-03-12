@@ -6,6 +6,8 @@ console.log("hi")
 
 const mainDiv = () => document.getElementById('main');
 const homeLink = () => document.getElementById('home-link');
+const goalLink = () => document.getElementById('goal-link');
+const listLink = () => document.getElementById('list-link');
 
 
 /* Event Listeners*/
@@ -13,9 +15,16 @@ const homeLinkEvent = () => {
     homeLink().addEventListener('click', renderHome)
 }
 
+const goalListEvent = () => {
+    goalLink().addEventListener('click', renderGoal)
+}
+
 /* Event Handlers*/
 
-const renderHome = () => {
+const renderHome = event => {
+    if (event) {
+        event.preventDefault();
+    }
     resetMainDiv();
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
@@ -33,6 +42,15 @@ const renderHome = () => {
     //<p class="center-align">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci optio inventore enim dolore magnam assumenda dolores sint corporis qui, odio quidem voluptatibus eligendi maiores eius obcaecati necessitatibus aliquid eos explicabo!</p>
 }
 
+const renderGoal = event => {
+    if (event) {
+        event.preventDefault();
+    }
+    const h1 = document.createElement('h1');
+    h1.innerText = 'Create Goals';
+   // <h1>Create Goals</h1>
+}
+
 /* Misc */
 
 const resetMainDiv = () => {
@@ -41,7 +59,8 @@ const resetMainDiv = () => {
 
 /* Startup - render homepage*/
 document.addEventListener('DOMContentLoaded', function(){
-    renderHome();    
+    //renderHome();    
     homeLinkEvent();
+    goalListEvent();
 })
 

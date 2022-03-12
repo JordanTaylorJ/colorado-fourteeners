@@ -46,9 +46,12 @@ const renderGoal = event => {
     if (event) {
         event.preventDefault();
     }
+    resetMainDiv();
     const h1 = document.createElement('h1');
     h1.innerText = 'Create Goals';
    // <h1>Create Goals</h1>
+
+   mainDiv().appendChild(h1);
 }
 
 /* Misc */

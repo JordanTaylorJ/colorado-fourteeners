@@ -19,6 +19,10 @@ const goalListEvent = () => {
     goalLink().addEventListener('click', renderGoal)
 }
 
+const fourteenerListEvent = () => {
+    listLink().addEventListener('click', renderList)
+}
+
 /* Event Handlers*/
 
 const renderHome = event => {
@@ -50,8 +54,17 @@ const renderGoal = event => {
     const h1 = document.createElement('h1');
     h1.innerText = 'Create Goals';
    // <h1>Create Goals</h1>
-
    mainDiv().appendChild(h1);
+}
+
+const renderList = event => {
+    if (event) {
+        event.preventDefault();
+    }
+    resetMainDiv();
+    const h1 = document.createElement('h1');
+    h1.innerText = 'This is where fourteeners will eventually be listed out if i can figure out how to do thatt...'
+    mainDiv().appendChild(h1);
 }
 
 /* Misc */
@@ -62,8 +75,9 @@ const resetMainDiv = () => {
 
 /* Startup - render homepage*/
 document.addEventListener('DOMContentLoaded', function(){
-    //renderHome();    
+    renderHome();    
     homeLinkEvent();
     goalListEvent();
+    fourteenerListEvent();
 })
 

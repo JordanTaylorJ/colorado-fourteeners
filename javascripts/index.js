@@ -65,7 +65,21 @@ const renderList = event => {
     const h1 = document.createElement('h1');
     h1.innerText = 'This is where fourteeners will eventually be listed out if i can figure out how to do thatt...'
     mainDiv().appendChild(h1);
+    fourteenerAPI();
 }
+
+/* Fetch External API */
+const fourteenerAPI = () => {
+    fetch("https://fourteeners-api.herokuapp.com/api/v1/peaks")
+    .then(function(response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    })
+}
+
 
 /* Misc */
 

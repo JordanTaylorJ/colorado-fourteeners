@@ -2,6 +2,8 @@ console.log("hi")
 
 /* Global Variables */
 
+let peaks = [];
+
 /* Node Getters */
 
 const mainDiv = () => document.getElementById('main');
@@ -63,20 +65,30 @@ const renderList = event => {
     }
     resetMainDiv();
     const h1 = document.createElement('h1');
-    h1.innerText = 'This is where fourteeners will eventually be listed out if i can figure out how to do thatt...'
+    h1.innerText = 'Colorado 14ner Peaks & Elevation'
     mainDiv().appendChild(h1);
-    fourteenerAPI();
+    //const ul = document.createElement('ul')
+    //mainDiv().appendChild(ul);
+    const li = document.createElement('li')
+    peaks.forEach( peaks => {
+        const li = document.createElement('li');
+        li.className = "collection-item";
+        li.innerText = peaks.name + ' ' + peaks.elevation + 'ft';
+        
+        mainDiv().appendChild(li);
+    })
 }
 
-/* Fetch External API */
-const fourteenerAPI = () => {
+/* Requests to External API */
+const fourteenerAPIFetch = () => {
     fetch("https://fourteeners-api.herokuapp.com/api/v1/peaks")
     .then(function(response) {
         console.log(response);
         return response.json();
     })
     .then(function(data){
-        console.log(data);
+        console.log('data', data);
+        peaks = data;
     })
 }
 
@@ -89,6 +101,7 @@ const resetMainDiv = () => {
 
 /* Startup - render homepage*/
 document.addEventListener('DOMContentLoaded', function(){
+    fourteenerAPIFetch();
     renderHome();    
     homeLinkEvent();
     goalListEvent();

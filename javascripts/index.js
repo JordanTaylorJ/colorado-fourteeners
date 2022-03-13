@@ -60,23 +60,23 @@ const renderGoal = event => {
 }
 
 const renderList = event => {
-    if (event) {
-        event.preventDefault();
-    }
+    if (event) {event.preventDefault()}
     resetMainDiv();
     const h1 = document.createElement('h1');
-    h1.innerText = 'Colorado 14ner Peaks & Elevation'
+    const ul = document.createElement('ul');
+    h1.innerText = 'Colorado 14ner Peaks & Elevation';
+    ul.className = 'collection';
     mainDiv().appendChild(h1);
-    //const ul = document.createElement('ul')
-    //mainDiv().appendChild(ul);
+    mainDiv().appendChild(ul);
     const li = document.createElement('li')
     peaks.forEach( peaks => {
         const li = document.createElement('li');
         li.className = "collection-item";
         li.innerText = peaks.name + ' ' + peaks.elevation + 'ft';
         
-        mainDiv().appendChild(li);
+        ul.appendChild(li);
     })
+    
 }
 
 /* Requests to External API */

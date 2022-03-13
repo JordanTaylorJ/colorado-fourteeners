@@ -1,5 +1,3 @@
-console.log("hi")
-
 /* Global Variables */
 
 let peaks = [];
@@ -12,7 +10,7 @@ const goalLink = () => document.getElementById('goal-link');
 const listLink = () => document.getElementById('list-link');
 
 
-/* Event Listeners*/
+/* Event Listeners */
 const homeLinkEvent = () => {
     homeLink().addEventListener('click', renderHome)
 }
@@ -25,7 +23,7 @@ const fourteenerListEvent = () => {
     listLink().addEventListener('click', renderList)
 }
 
-/* Event Handlers*/
+/* Event Handlers */
 
 const renderHome = event => {
     if (event) {
@@ -73,11 +71,18 @@ const renderList = event => {
         const li = document.createElement('li');
         li.className = "collection-item";
         li.innerText = peaks.name + ' ' + peaks.elevation + 'ft';
-        
+        const btn = document.createElement('button')
+        btn.addEventListener('click', addToGoals)
         ul.appendChild(li);
+        li.appendChild(btn);
     })
     
 }
+
+const addToGoals = () => {
+    console.log('itworked');
+}
+
 
 /* Requests to External API */
 const fourteenerAPIFetch = () => {
@@ -99,7 +104,7 @@ const resetMainDiv = () => {
     mainDiv().innerHTML = '';
 }
 
-/* Startup - render homepage*/
+/* Startup - render homepage */
 document.addEventListener('DOMContentLoaded', function(){
     fourteenerAPIFetch();
     renderHome();    

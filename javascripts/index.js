@@ -83,9 +83,15 @@ const renderList = event => {
         li.className = "collection-item";
         li.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
         const btn = document.createElement('button');
-        btn.addEventListener('click', addToGoals, peaks.name);
+        const addToGoals = () => {
+            console.log('itworked');
+            goalList.push(li.innerText);
+            
+        }
+        btn.addEventListener('click', addToGoals);
         btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
         btn.textContent = '+';
+        
         ul.appendChild(li);
         li.appendChild(btn);
     })
@@ -93,12 +99,7 @@ const renderList = event => {
 }
 
 //addToGoals will add the selected item to the to-do list
-const addToGoals = (mtn) => {
-    console.log('itworked');
-    goalList.push(mtn);
-    //const ul = document.createElement('ul');
-    //ul.innerText = peaks.name;
-}
+
 
 
 /* Requests to External API */

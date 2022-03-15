@@ -54,15 +54,20 @@ const renderGoal = event => {
     resetMainDiv();
     const h1 = document.createElement('h1');
     h1.innerText = 'Create Goals';
-   // <h1>Create Goals</h1>
    mainDiv().appendChild(h1);
-   //addToGoals();
    const ul = document.createElement('ul');
+   ul.className = 'collection'
    mainDiv().appendChild(ul);
-   goalList.forEach(mtn => {
+   goalList.forEach(mtnPeak => {
        const li = document.createElement('li');
-       li.innerText = mtn;
+       li.className = 'collection-item';
+       li.innerText = mtnPeak;
+       const btn = document.createElement('button');
+       btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
+       btn.textContent = '-';
+       btn.addEventListener('click', handleDelete);
        ul.appendChild(li);
+       li.appendChild(btn);
    })
    
    console.log(goalList);
@@ -83,14 +88,13 @@ const renderList = event => {
         li.className = "collection-item";
         li.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
         const btn = document.createElement('button');
+        btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
+        btn.textContent = '+';
         const addToGoals = () => {
-            console.log('itworked');
             goalList.push(li.innerText);
             
         }
         btn.addEventListener('click', addToGoals);
-        btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
-        btn.textContent = '+';
         
         ul.appendChild(li);
         li.appendChild(btn);
@@ -98,7 +102,11 @@ const renderList = event => {
     
 }
 
-//addToGoals will add the selected item to the to-do list
+/* Handle Delete from Goals */
+
+const handleDelete = () => {
+
+}
 
 
 

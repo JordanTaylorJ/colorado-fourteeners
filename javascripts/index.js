@@ -1,6 +1,7 @@
 /* Global Variables */
 
 let peaks = [];
+let goalList = [];
 
 /* Node Getters */
 
@@ -55,6 +56,16 @@ const renderGoal = event => {
     h1.innerText = 'Create Goals';
    // <h1>Create Goals</h1>
    mainDiv().appendChild(h1);
+   //addToGoals();
+   const ul = document.createElement('ul');
+   mainDiv().appendChild(ul);
+   goalList.forEach(mtn => {
+       const li = document.createElement('li');
+       li.innerText = mtn;
+       ul.appendChild(li);
+   })
+   
+   console.log(goalList);
 }
 
 const renderList = event => {
@@ -70,17 +81,23 @@ const renderList = event => {
     peaks.forEach( peaks => {
         const li = document.createElement('li');
         li.className = "collection-item";
-        li.innerText = peaks.name + ' ' + peaks.elevation + 'ft';
-        const btn = document.createElement('button')
-        btn.addEventListener('click', addToGoals)
+        li.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
+        const btn = document.createElement('button');
+        btn.addEventListener('click', addToGoals, peaks.name);
+        btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
+        btn.textContent = '+';
         ul.appendChild(li);
         li.appendChild(btn);
     })
     
 }
 
-const addToGoals = () => {
+//addToGoals will add the selected item to the to-do list
+const addToGoals = (mtn) => {
     console.log('itworked');
+    goalList.push(mtn);
+    //const ul = document.createElement('ul');
+    //ul.innerText = peaks.name;
 }
 
 

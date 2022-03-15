@@ -63,8 +63,12 @@ const renderGoal = event => {
        li.className = 'collection-item';
        li.innerText = mtnPeak;
        const btn = document.createElement('button');
-       btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
+       btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
        btn.textContent = '-';
+       const handleDelete = (mtnPeak) => {
+        goalList.splice(mtnPeak, 1);
+        li.remove();
+    }
        btn.addEventListener('click', handleDelete);
        ul.appendChild(li);
        li.appendChild(btn);
@@ -79,7 +83,7 @@ const renderList = event => {
     const h1 = document.createElement('h1');
     const ul = document.createElement('ul');
     h1.innerText = 'Colorado 14ner Peaks & Elevation';
-    ul.className = 'collection';
+    ul.className = 'collapsible';
     mainDiv().appendChild(h1);
     mainDiv().appendChild(ul);
     const li = document.createElement('li')
@@ -88,25 +92,39 @@ const renderList = event => {
         li.className = "collection-item";
         li.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
         const btn = document.createElement('button');
-        btn.className = 'btn-floating btn-small waves-effect waves-light blue material-icons';
+        btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
         const addToGoals = () => {
             goalList.push(li.innerText);
-            
         }
         btn.addEventListener('click', addToGoals);
-        
         ul.appendChild(li);
         li.appendChild(btn);
     })
     
 }
 
+
+/*
+<ul class="collapsible">
+<li>
+  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+</li>
+<li>
+  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+</li>
+<li>
+  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+</li>
+</ul>
+*/
+
 /* Handle Delete from Goals */
 
-const handleDelete = () => {
 
-}
 
 
 

@@ -37,16 +37,16 @@ const renderHome = event => {
     const p = document.createElement('p');
     const img = new Image(600, 360);
     
-    h1.className = "center-align"
-    p.className = 'center-align'
+    h1.className = "center-align";
+    p.className = 'center-align';
     //img.className = "center-align"
-    h1.innerText='Colorado Fourteeners'
-    p.innerText= 'Set goals and hike some shit.'
-    img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg"
-    img.style = "margin: 0, auto"
+    h1.innerText='Colorado Fourteeners';
+    p.innerText= 'Set goals and hike some shit.';
+    img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg";
+    img.style = "margin: 0, auto";
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
-    mainDiv().appendChild(img)
+    mainDiv().appendChild(img);
 }
 
 const renderGoal = event => {
@@ -55,8 +55,12 @@ const renderGoal = event => {
     }
     resetMainDiv();
     const h1 = document.createElement('h1');
+    const p = document.createElement('p');
     h1.innerText = 'Colorado Fourteeners Completed';
+    const thisMany = 'this many';
+    p.innerText = `You've completed ${thisMany} 14ners!!!`
     mainDiv().appendChild(h1);
+    mainDiv().appendChild(p);
     const ul = document.createElement('ul');
     ul.className = 'collection'
     mainDiv().appendChild(ul);
@@ -68,9 +72,9 @@ const renderGoal = event => {
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '-';
         const handleDelete = (mtnPeak) => {
-        goalList.splice(mtnPeak, 1);
-        li.remove();
-    }
+            goalList.splice(mtnPeak, 1);
+            li.remove();
+        }
         btn.addEventListener('click', handleDelete);
         ul.appendChild(li);
         li.appendChild(btn);
@@ -94,7 +98,6 @@ const renderList = event => {
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(ul);
-    
     peaks.forEach( peaks => {
         const li = document.createElement('li');
         const div = document.createElement('div');

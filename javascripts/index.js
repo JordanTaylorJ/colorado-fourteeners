@@ -102,7 +102,7 @@ const renderList = event => {
         const div2 = document.createElement('div');
         div2.className = 'collapsible-body';
         div.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
-        div2.innerText = peaks.rank + peaks.range + peaks.routes;
+        div2.innerText = 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';

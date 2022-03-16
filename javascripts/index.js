@@ -33,15 +33,15 @@ const renderHome = event => {
     resetMainDiv();
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
-    const img = new Image(500, 300);
+    const img = new Image(600, 360);
     
     h1.className = "center-align"
     p.className = 'center-align'
-    img.className = "center-align"
+    //img.className = "center-align"
     h1.innerText='Colorado Fourteeners'
     p.innerText= 'Set goals and hike some shit.'
     img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg"
-    
+    img.style = "margin: 0, auto"
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(img)

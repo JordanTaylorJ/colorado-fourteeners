@@ -19,3 +19,4 @@ navigation
 more details on select 14ner
 have peaks display in order by elevation 
 add pictures/routes/maps
+add a percentage complete on the completed list out

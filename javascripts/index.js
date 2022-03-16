@@ -55,7 +55,7 @@ const renderGoal = event => {
     }
     resetMainDiv();
     const h1 = document.createElement('h1');
-    h1.innerText = 'Create Goals';
+    h1.innerText = 'Colorado Fourteeners Completed';
     mainDiv().appendChild(h1);
     const ul = document.createElement('ul');
     ul.className = 'collection'
@@ -86,10 +86,13 @@ const renderList = event => {
         $('.collapsible').collapsible();
     });
     const h1 = document.createElement('h1');
+    const p = document.createElement('p');
     const ul = document.createElement('ul');
     h1.innerText = 'Colorado 14ner Peaks & Elevation';
+    p.innerText = 'Click the Fourteener for more information. Use the + to add it to your completed list!'
     ul.className = 'collapsible';
     mainDiv().appendChild(h1);
+    mainDiv().appendChild(p);
     mainDiv().appendChild(ul);
     
     peaks.forEach( peaks => {
@@ -98,7 +101,7 @@ const renderList = event => {
         div.className = 'collapsible-header';
         const div2 = document.createElement('div');
         div2.className = 'collapsible-body';
-        div.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
+        div.innerText = peaks.name + ' ' + peaks.elevation + 'ft ' + '   ';
         div2.innerText = 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
@@ -109,9 +112,10 @@ const renderList = event => {
         }
         btn.addEventListener('click', addToGoals);
         ul.appendChild(li);
+        li.appendChild(btn);
         li.appendChild(div);
         li.appendChild(div2);
-        div.appendChild(btn);
+        
     })
     
 }

@@ -3,6 +3,7 @@
 let peaks = [];
 let goalList = [];
 
+
 /* Node Getters */
 
 const mainDiv = () => document.getElementById('main');
@@ -23,6 +24,7 @@ const goalListEvent = () => {
 const fourteenerListEvent = () => {
     listLink().addEventListener('click', renderList)
 }
+
 
 /* Event Handlers */
 
@@ -80,11 +82,6 @@ const renderGoal = event => {
 const renderList = event => {
     if (event) {event.preventDefault()}
     resetMainDiv();
-    /*document.addEventListener('DOMContentLoaded', function() {
-        console.log('this is working')
-        const elems = document.querySelectorAll('.collapsible');
-        const instances = M.Collapsible.init(elems, options);
-    });*/
     $(document).ready(function(){
         $('.collapsible').collapsible();
       });
@@ -119,29 +116,6 @@ const renderList = event => {
 }
 
 
-/*
-<ul class="collapsible">
-<li>
-  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-</li>
-<li>
-  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-</li>
-<li>
-  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-</li>
-</ul>
-*/
-
-/* Handle Delete from Goals */
-
-
-
-
-
 /* Requests to External API */
 const fourteenerAPIFetch = () => {
     fetch("https://fourteeners-api.herokuapp.com/api/v1/peaks")
@@ -161,6 +135,7 @@ const fourteenerAPIFetch = () => {
 const resetMainDiv = () => {
     mainDiv().innerHTML = '';
 }
+
 
 /* Startup - render homepage */
 document.addEventListener('DOMContentLoaded', function(){

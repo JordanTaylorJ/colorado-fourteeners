@@ -56,24 +56,24 @@ const renderGoal = event => {
     resetMainDiv();
     const h1 = document.createElement('h1');
     h1.innerText = 'Create Goals';
-   mainDiv().appendChild(h1);
-   const ul = document.createElement('ul');
-   ul.className = 'collection'
-   mainDiv().appendChild(ul);
-   goalList.forEach(mtnPeak => {
-       const li = document.createElement('li');
-       li.className = 'collection-item';
-       li.innerText = mtnPeak;
-       const btn = document.createElement('button');
-       btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
-       btn.textContent = '-';
-       const handleDelete = (mtnPeak) => {
+    mainDiv().appendChild(h1);
+    const ul = document.createElement('ul');
+    ul.className = 'collection'
+    mainDiv().appendChild(ul);
+    goalList.forEach(mtnPeak => {
+        const li = document.createElement('li');
+        li.className = 'collection-item';
+        li.innerText = mtnPeak;
+        const btn = document.createElement('button');
+        btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
+        btn.textContent = '-';
+        const handleDelete = (mtnPeak) => {
         goalList.splice(mtnPeak, 1);
         li.remove();
     }
-       btn.addEventListener('click', handleDelete);
-       ul.appendChild(li);
-       li.appendChild(btn);
+        btn.addEventListener('click', handleDelete);
+        ul.appendChild(li);
+        li.appendChild(btn);
    })
    
    console.log(goalList);
@@ -84,7 +84,7 @@ const renderList = event => {
     resetMainDiv();
     $(document).ready(function(){
         $('.collapsible').collapsible();
-      });
+    });
     const h1 = document.createElement('h1');
     const ul = document.createElement('ul');
     h1.innerText = 'Colorado 14ner Peaks & Elevation';
@@ -104,7 +104,8 @@ const renderList = event => {
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
         const addToGoals = () => {
-            goalList.push(div.innerText);
+            const string = div.innerText;
+            goalList.push(string.slice(0, -1));
         }
         btn.addEventListener('click', addToGoals);
         ul.appendChild(li);

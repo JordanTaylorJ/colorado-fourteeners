@@ -80,26 +80,40 @@ const renderGoal = event => {
 const renderList = event => {
     if (event) {event.preventDefault()}
     resetMainDiv();
+    /*document.addEventListener('DOMContentLoaded', function() {
+        console.log('this is working')
+        const elems = document.querySelectorAll('.collapsible');
+        const instances = M.Collapsible.init(elems, options);
+    });*/
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
     const h1 = document.createElement('h1');
     const ul = document.createElement('ul');
     h1.innerText = 'Colorado 14ner Peaks & Elevation';
     ul.className = 'collapsible';
     mainDiv().appendChild(h1);
     mainDiv().appendChild(ul);
-    const li = document.createElement('li')
+    
     peaks.forEach( peaks => {
         const li = document.createElement('li');
-        li.className = "collection-item";
-        li.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
+        const div = document.createElement('div');
+        div.className = 'collapsible-header';
+        const div2 = document.createElement('div');
+        div2.className = 'collapsible-body';
+        div.innerText = peaks.name + ' ' + peaks.elevation + 'ft ';
+        div2.innerText = peaks.rank + peaks.range + peaks.routes;
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
         const addToGoals = () => {
-            goalList.push(li.innerText);
+            goalList.push(div.innerText);
         }
         btn.addEventListener('click', addToGoals);
         ul.appendChild(li);
-        li.appendChild(btn);
+        li.appendChild(div);
+        li.appendChild(div2);
+        div.appendChild(btn);
     })
     
 }

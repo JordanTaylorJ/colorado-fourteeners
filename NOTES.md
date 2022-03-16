@@ -17,3 +17,5 @@ navigation
 
 #Strech Goals
 more details on select 14ner
+have peaks display in order by elevation 
+add pictures/routes/maps

@@ -33,18 +33,18 @@ const renderHome = event => {
     resetMainDiv();
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
+    const img = new Image(500, 300);
+    
     h1.className = "center-align"
     p.className = 'center-align'
+    img.className = "center-align"
     h1.innerText='Colorado Fourteeners'
     p.innerText= 'Set goals and hike some shit.'
-
+    img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg"
+    
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
-
-    console.log('h1', h1);
-    console.log('p', p);
-    //<h1 class='center-align'>Colorado Fourteeners</h1>
-    //<p class="center-align">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci optio inventore enim dolore magnam assumenda dolores sint corporis qui, odio quidem voluptatibus eligendi maiores eius obcaecati necessitatibus aliquid eos explicabo!</p>
+    mainDiv().appendChild(img)
 }
 
 const renderGoal = event => {

@@ -41,7 +41,7 @@ const renderHome = event => {
     p.className = 'center-align';
     //img.className = "center-align"
     h1.innerText='Colorado Fourteeners';
-    p.innerText= 'Set goals and hike some shit.';
+    p.innerText= `A minimal guide to Colorado's peaks above 14,000ft.`;
     img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg";
     img.style = "margin: 0, auto";
     mainDiv().appendChild(h1);
@@ -57,7 +57,7 @@ const renderGoal = event => {
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
     h1.innerText = 'Colorado Fourteeners Completed';
-    const thisMany = 'this many';
+    const thisMany = 'this many'; 
     p.innerText = `You've completed ${thisMany} 14ners!!!`
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
@@ -86,6 +86,7 @@ const renderGoal = event => {
 const renderList = event => {
     if (event) {event.preventDefault()}
     resetMainDiv();
+    //taken from materialize as jQuery to initialize collaplible items
     $(document).ready(function(){
         $('.collapsible').collapsible();
     });
@@ -104,14 +105,13 @@ const renderList = event => {
         div.className = 'collapsible-header';
         const div2 = document.createElement('div');
         div2.className = 'collapsible-body';
-        div.innerText = peaks.name + ' ' + peaks.elevation + 'ft ' + '   ';
-        div2.innerText = 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
+        div.innerText = peaks.name + '   ';
+        div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
         const addToGoals = () => {
-            const string = div.innerText;
-            goalList.push(string.slice(0, -1));
+            goalList.push(div.innerText);
         }
         btn.addEventListener('click', addToGoals);
         ul.appendChild(li);

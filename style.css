@@ -1,0 +1,14 @@
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.rightJT {
+    position: relative;
+    right: 200px;
+    width: 300px;
+    padding: 10px;
+  }

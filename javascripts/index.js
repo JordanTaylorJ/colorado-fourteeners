@@ -35,15 +35,13 @@ const renderHome = event => {
     resetMainDiv();
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
-    const img = new Image(600, 360);
-    
+    const img = new Image(1000, 300);
     h1.className = "center-align";
     p.className = 'center-align';
-    //img.className = "center-align"
+    img.className = "center";
     h1.innerText='Colorado Fourteeners';
-    p.innerText= `A minimal guide to Colorado's peaks above 14,000ft.`;
-    img.src = "/Users/jordantaylorjoseph/Development/code/phase-1/project-1/brad-barmore-bP-L4h69_50-unsplash.jpg";
-    img.style = "margin: 0, auto";
+    p.innerText= `A minimal guide to Colorado's peaks above 14,000ft`;
+    img.src = "./brad-barmore-bP-L4h69_50-unsplash.jpg";
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(img);
@@ -67,12 +65,12 @@ const renderGoal = event => {
     goalList.forEach(mtnPeak => {
         const li = document.createElement('li');
         li.className = 'collection-item';
-        li.innerText = mtnPeak;
+        li.innerText = mtnPeak + '\t';
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '-';
-        const handleDelete = (mtnPeak) => {
-            goalList.splice(mtnPeak, 1);
+        const handleDelete = (fml) => {
+            goalList.splice(fml, 1);
             li.remove();
         }
         btn.addEventListener('click', handleDelete);
@@ -105,7 +103,7 @@ const renderList = event => {
         div.className = 'collapsible-header';
         const div2 = document.createElement('div');
         div2.className = 'collapsible-body';
-        div.innerText = peaks.name + '   ';
+        div.innerText = peaks.name;
         div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';

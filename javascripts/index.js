@@ -72,12 +72,9 @@ const renderGoal = event => {
         const handleDelete = () => {
             let mtnName = li.innerText.substring(0, li.innerText.length-2)
             for(let peak = 0; peak < goalList.length; peak++) {
-                
-                console.log('now we here mfkers');
                 console.log(mtnName);
                 if (goalList[peak] === mtnName) {
                     goalList.splice(peak, 1);
-                    console.log('we here bitches')
                     li.remove();
                 } 
             }

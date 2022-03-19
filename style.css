@@ -6,9 +6,18 @@
     width: 50%;
 }
 
-.rightJT {
-    position: relative;
-    right: 200px;
-    width: 300px;
-    padding: 10px;
+  .columnJ {
+    float: left;
+  }
+  
+  .leftJ {
+    width: 25%;
+  }
+
+  .rightJ {
+      width: 75%;
+  }
+
+  .rowJ {
+    display: flex;
   }

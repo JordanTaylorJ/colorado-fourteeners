@@ -100,21 +100,33 @@ const renderList = event => {
     peaks.forEach( peaks => {
         const li = document.createElement('li');
         const div = document.createElement('div');
-        div.className = 'collapsible-header';
         const div2 = document.createElement('div');
-        div2.className = 'collapsible-body';
-        div.innerText = peaks.name;
-        div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
         const btn = document.createElement('button');
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'rowJ';
+        
+        div.className = 'collapsible-header', 'rightJ', 'columnJ';
+        div.innerText = peaks.name;
+
+        const btnDiv = document.createElement('div');
+        btnDiv.className = 'leftJ';
+
+
+        div2.className = 'collapsible-body';
+        div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
+        
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
+        
         const addToGoals = () => {
             goalList.push(div.innerText);
         }
         btn.addEventListener('click', addToGoals);
         ul.appendChild(li);
-        li.appendChild(btn);
-        li.appendChild(div);
+        li.appendChild(rowDiv);
+        rowDiv.appendChild(btnDiv);
+        btnDiv.appendChild(btn);
+        rowDiv.appendChild(div);
         li.appendChild(div2);
         
     })

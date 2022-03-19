@@ -69,9 +69,19 @@ const renderGoal = event => {
         const btn = document.createElement('button');
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '-';
-        const handleDelete = (fml) => {
-            goalList.splice(fml, 1);
-            li.remove();
+        const handleDelete = () => {
+            let mtnName = li.innerText.substring(0, li.innerText.length-2)
+            for(let peak = 0; peak < goalList.length; peak++) {
+                
+                console.log('now we here mfkers');
+                console.log(mtnName);
+                if (goalList[peak] === mtnName) {
+                    goalList.splice(peak, 1);
+                    console.log('we here bitches')
+                    li.remove();
+                } 
+            }
+             
         }
         btn.addEventListener('click', handleDelete);
         ul.appendChild(li);

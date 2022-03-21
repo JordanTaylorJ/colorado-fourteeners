@@ -33,19 +33,19 @@ const renderHome = event => {
         event.preventDefault();
     }
     resetMainDiv();
-    //const h1 = document.createElement('h1');
+
     const p = document.createElement('p');
     const h2 = document.createElement('h4');
     const img = new Image(1000, 300);
-    //h1.className = "center-align";
+    
     h2.className = "center-align";
     p.className = 'center-align';
     img.className = "center";
-    //h1.innerText='Colorado Fourteeners';
+
     h2.innerText = "\n A Minimal Guide to Colorado's Peaks Above 14,000ft"
     p.innerText= `\n Colorado is home to the most 14ers of any state. Use this site to check off your bucket list of CO peaks. \n This informtion is meant as a reference. All hikers should consult route maps, check weather advisories, and know their physical limiations before embarking up these peaks.`;
     img.src = "./brad-barmore-bP-L4h69_50-unsplash.jpg";
-    //mainDiv().appendChild(h1);
+    
     mainDiv().appendChild(h2);
     mainDiv().appendChild(p);
     mainDiv().appendChild(img);
@@ -56,11 +56,15 @@ const renderGoal = event => {
         event.preventDefault();
     }
     resetMainDiv();
+
     const h1 = document.createElement('h4');
     const p = document.createElement('p');
-    h1.innerText = '\n Colorado Fourteeners Completed';
+    const ul = document.createElement('ul');
+
     h1.className = 'center-align';
-    
+    ul.className = 'collection'
+
+    h1.innerText = '\n Colorado Fourteeners Completed';
     if (goalList.length === 0){
         p.innerText = 'Use the Peak Finder to plan your next adventure!'
     }
@@ -68,18 +72,21 @@ const renderGoal = event => {
         const thisMany = goalList.length; 
         p.innerText = `You've completed ${thisMany}/53 Fourteeners!`
     }
-        mainDiv().appendChild(h1);
+
+    mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
-    const ul = document.createElement('ul');
-    ul.className = 'collection'
     mainDiv().appendChild(ul);
+
     goalList.forEach(mtnPeak => {
         const li = document.createElement('li');
-        li.className = 'collection-item';
-        li.innerText = mtnPeak + '\t';
         const btn = document.createElement('button');
+        
+        li.className = 'collection-item';
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
+
+        li.innerText = mtnPeak + '\t'; 
         btn.textContent = '-';
+
         const handleDelete = () => {
             let mtnName = li.innerText.substring(0, li.innerText.length-2)
             for(let peak = 0; peak < goalList.length; peak++) {
@@ -96,24 +103,25 @@ const renderGoal = event => {
         ul.appendChild(li);
         li.appendChild(btn);
    })
-   
    console.log(goalList);
 }
 
 const renderList = event => {
     if (event) {event.preventDefault()}
     resetMainDiv();
-    //taken from materialize as jQuery to initialize collaplible items
+
+    //taken from materialize as jQuery to initialize collapsible items
     $(document).ready(function(){
         $('.collapsible').collapsible();
     });
+
     const h1 = document.createElement('h4');
     const p = document.createElement('p');
     const ul = document.createElement('ul');
     
     ul.className = 'collapsible';
     h1.className = 'center-align';
-
+    
     h1.innerText = '\n Colorado 14er Peaks & Elevation';
     p.innerText = 'Click the Fourteener for more information. Use the + to add it to your completed list!'
     

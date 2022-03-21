@@ -35,14 +35,14 @@ const renderHome = event => {
     resetMainDiv();
     //const h1 = document.createElement('h1');
     const p = document.createElement('p');
-    const h2 = document.createElement('h3');
+    const h2 = document.createElement('h4');
     const img = new Image(1000, 300);
     //h1.className = "center-align";
     h2.className = "center-align";
     p.className = 'center-align';
     img.className = "center";
     //h1.innerText='Colorado Fourteeners';
-    h2.innerText = "A minimal guide to Colorado's peaks above 14,000ft."
+    h2.innerText = "\n A Minimal Guide to Colorado's Peaks Above 14,000ft"
     p.innerText= `\n Colorado is home to the most 14ers of any state. Use this site to check off your bucket list of CO peaks. \n This informtion is meant as a reference. All hikers should consult route maps, check weather advisories, and know their physical limiations before embarking up these peaks.`;
     img.src = "./brad-barmore-bP-L4h69_50-unsplash.jpg";
     //mainDiv().appendChild(h1);
@@ -56,9 +56,10 @@ const renderGoal = event => {
         event.preventDefault();
     }
     resetMainDiv();
-    const h1 = document.createElement('h1');
+    const h1 = document.createElement('h4');
     const p = document.createElement('p');
-    h1.innerText = 'Colorado Fourteeners Completed';
+    h1.innerText = '\n Colorado Fourteeners Completed';
+    h1.className = 'center-align';
     
     if (goalList.length === 0){
         p.innerText = 'Use the Peak Finder to plan your next adventure!'
@@ -106,12 +107,16 @@ const renderList = event => {
     $(document).ready(function(){
         $('.collapsible').collapsible();
     });
-    const h1 = document.createElement('h1');
+    const h1 = document.createElement('h4');
     const p = document.createElement('p');
     const ul = document.createElement('ul');
-    h1.innerText = 'Colorado 14er Peaks & Elevation';
-    p.innerText = 'Click the Fourteener for more information. Use the + to add it to your completed list!'
+    
     ul.className = 'collapsible';
+    h1.className = 'center-align';
+
+    h1.innerText = '\n Colorado 14er Peaks & Elevation';
+    p.innerText = 'Click the Fourteener for more information. Use the + to add it to your completed list!'
+    
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(ul);

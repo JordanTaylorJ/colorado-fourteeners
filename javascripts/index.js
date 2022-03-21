@@ -40,7 +40,7 @@ const renderHome = event => {
     p.className = 'center-align';
     img.className = "center";
     h1.innerText='Colorado Fourteeners';
-    p.innerText= `A minimal guide to Colorado's peaks above 14,000ft`;
+    p.innerText= `A minimal guide to Colorado's peaks above 14,000ft.`;
     img.src = "./brad-barmore-bP-L4h69_50-unsplash.jpg";
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
@@ -55,8 +55,8 @@ const renderGoal = event => {
     const h1 = document.createElement('h1');
     const p = document.createElement('p');
     h1.innerText = 'Colorado Fourteeners Completed';
-    const thisMany = 'this many'; 
-    p.innerText = `You've completed ${thisMany} 14ners!!!`
+    const thisMany = goalList.length; 
+    p.innerText = `You've completed ${thisMany}/53 Fourteeners!`
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     const ul = document.createElement('ul');
@@ -76,6 +76,7 @@ const renderGoal = event => {
                 if (goalList[peak] === mtnName) {
                     goalList.splice(peak, 1);
                     li.remove();
+                    renderGoal();
                 } 
             }
              

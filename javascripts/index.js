@@ -107,14 +107,17 @@ const renderList = event => {
     peaks.forEach( peaks => {
         const li = document.createElement('li');
         const div = document.createElement('div');
-        div.className = 'collapsible-header';
         const div2 = document.createElement('div');
+        const btn = document.createElement('button');
+        
+        div.className = 'collapsible-header';
         div2.className = 'collapsible-body';
+        btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
+
         div.innerText = peaks.name;
         div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
-        const btn = document.createElement('button');
-        btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
         btn.textContent = '+';
+
         const addToGoals = () => {
             goalList.push(div.innerText);
         }

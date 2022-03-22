@@ -90,7 +90,6 @@ const renderGoal = event => {
         const handleDelete = () => {
             let mtnName = li.innerText.substring(0, li.innerText.length-2)
             for(let peak = 0; peak < goalList.length; peak++) {
-                console.log(mtnName);
                 if (goalList[peak] === mtnName) {
                     goalList.splice(peak, 1);
                     li.remove();
@@ -100,6 +99,7 @@ const renderGoal = event => {
              
         }
         btn.addEventListener('click', handleDelete);
+
         ul.appendChild(li);
         li.appendChild(btn);
    })
@@ -121,7 +121,7 @@ const renderList = event => {
     
     ul.className = 'collapsible';
     h1.className = 'center-align';
-    
+
     h1.innerText = '\n Colorado 14er Peaks & Elevation';
     p.innerText = 'Click the Fourteener for more information. Use the + to add it to your completed list!'
     
@@ -143,9 +143,22 @@ const renderList = event => {
         btn.textContent = '+';
 
         const addToGoals = () => {
-            goalList.push(div.innerText);
+            console.log('you are here');
+            let alreadyHere = false;
+            for(let peak = 0; peak < goalList.length; peak++) {
+                let mtnName = div.innerText;
+                if (goalList[peak] === mtnName){
+                    alreadyHere = true;
+                    alert("You've already added this to your list!");
+                }
+            }
+            if (alreadyHere === false) {
+                goalList.push(div.innerText);
+            }
+            
         }
         btn.addEventListener('click', addToGoals);
+
         ul.appendChild(li);
         li.appendChild(btn);
         li.appendChild(div);
@@ -160,7 +173,6 @@ const renderList = event => {
 const fourteenerAPIFetch = () => {
     fetch("https://fourteeners-api.herokuapp.com/api/v1/peaks")
     .then(function(response) {
-        console.log(response);
         return response.json();
     })
     .then(function(data){

@@ -149,7 +149,7 @@ const renderList = event => {
                 let mtnName = div.innerText;
                 if (goalList[peak] === mtnName){
                     alreadyHere = true;
-                    alert("You've already added this to your list!");
+                    alert("You've already added this peak to your list!");
                 }
             }
             if (alreadyHere === false) {

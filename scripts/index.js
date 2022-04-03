@@ -1,15 +1,16 @@
 /* Global Variables */
 
 let peaks = [];
-let goalList = [];
+let completeList = [];
 
 
 /* Node Getters */
 
 const mainDiv = () => document.getElementById('main');
 const homeLink = () => document.getElementById('home-link');
-const goalLink = () => document.getElementById('goal-link');
+const completeLink = () => document.getElementById('complete-link');
 const listLink = () => document.getElementById('list-link');
+
 
 
 /* Event Listeners */
@@ -17,8 +18,8 @@ const homeLinkEvent = () => {
     homeLink().addEventListener('click', renderHome)
 }
 
-const goalListEvent = () => {
-    goalLink().addEventListener('click', renderGoal)
+const completeListEvent = () => {
+    completeLink().addEventListener('click', renderComplete)
 }
 
 const fourteenerListEvent = () => {
@@ -51,7 +52,7 @@ const renderHome = event => {
     mainDiv().appendChild(img);
 }
 
-const renderGoal = event => {
+const renderComplete = event => {
     if (event) {
         event.preventDefault();
     }
@@ -65,11 +66,11 @@ const renderGoal = event => {
     ul.className = 'collection'
 
     h1.innerText = '\n Colorado Fourteeners Completed';
-    if (goalList.length === 0){
+    if (completeList.length === 0){
         p.innerText = 'Use the Peak Finder to plan your next adventure!'
     }
     else {
-        const thisMany = goalList.length; 
+        const thisMany = completeList.length; 
         p.innerText = `You've completed ${thisMany}/53 Fourteeners!`
     }
 
@@ -77,7 +78,7 @@ const renderGoal = event => {
     mainDiv().appendChild(p);
     mainDiv().appendChild(ul);
 
-    goalList.forEach(mtnPeak => {
+    completeList.forEach(mtnPeak => {
         const li = document.createElement('li');
         const btn = document.createElement('button');
         
@@ -89,11 +90,11 @@ const renderGoal = event => {
 
         const handleDelete = () => {
             let mtnName = li.innerText.substring(0, li.innerText.length-2)
-            for(let peak = 0; peak < goalList.length; peak++) {
-                if (goalList[peak] === mtnName) {
-                    goalList.splice(peak, 1);
+            for(let peak = 0; peak < completeList.length; peak++) {
+                if (completeList[peak] === mtnName) {
+                    completeList.splice(peak, 1);
                     li.remove();
-                    renderGoal();
+                    renderComplete();
                 } 
             }
              
@@ -103,7 +104,7 @@ const renderGoal = event => {
         ul.appendChild(li);
         li.appendChild(btn);
    })
-   console.log(goalList);
+   console.log(completeList);
 }
 
 const renderList = event => {
@@ -129,6 +130,9 @@ const renderList = event => {
     mainDiv().appendChild(p);
     mainDiv().appendChild(ul);
     peaks.forEach( peaks => {
+
+        const {name, elevation, rank, range, jerryLevel, numberOfRoutes} = peaks;
+        
         const li = document.createElement('li');
         const div = document.createElement('div');
         const div2 = document.createElement('div');
@@ -138,26 +142,26 @@ const renderList = event => {
         div2.className = 'collapsible-body';
         btn.className = 'btn-floating btn-small waves-effect waves-light-blue material-icons';
 
-        div.innerText = peaks.name;
-        div2.innerText = 'Elevation:' + ' ' + peaks.elevation + 'ft ' + '\n' + 'Rank:' + ' ' + peaks.rank + '\n' + 'Mountain Range:' + ' ' + peaks.range + '\n' + "Jerry Level:" + ' ' + peaks.jerryLevel + '\n' + "Number of Routes:" + ' ' + peaks.numberOfRoutes;
+        div.innerText = name;
+        div2.innerText = 'Elevation:' + ' ' + elevation + 'ft ' + '\n' + 'Rank:' + ' ' + rank + '\n' + 'Mountain Range:' + ' ' + range + '\n' + "Jerry Level:" + ' ' + jerryLevel + '\n' + "Number of Routes:" + ' ' + numberOfRoutes;
         btn.textContent = '+';
 
-        const addToGoals = () => {
+        const addToComplete = () => {
             console.log('you are here');
             let alreadyHere = false;
-            for(let peak = 0; peak < goalList.length; peak++) {
+            for(let peak = 0; peak < completeList.length; peak++) {
                 let mtnName = div.innerText;
-                if (goalList[peak] === mtnName){
+                if (completeList[peak] === mtnName){
                     alreadyHere = true;
                     alert("You've already added this peak to your list!");
                 }
             }
             if (alreadyHere === false) {
-                goalList.push(div.innerText);
+                completeList.push(div.innerText);
             }
             
         }
-        btn.addEventListener('click', addToGoals);
+        btn.addEventListener('click', addToComplete);
 
         ul.appendChild(li);
         li.appendChild(btn);
@@ -194,7 +198,8 @@ document.addEventListener('DOMContentLoaded', function(){
     fourteenerAPIFetch();
     renderHome();    
     homeLinkEvent();
-    goalListEvent();
+    completeListEvent();
     fourteenerListEvent();
 })
+
 

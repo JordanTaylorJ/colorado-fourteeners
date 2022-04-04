@@ -71,7 +71,7 @@ const renderComplete = event => {
     }
     else {
         const thisMany = completeList.length; 
-        p.innerText = `You've completed ${thisMany}/53 Fourteeners!`
+        p.innerText = `You've completed ${thisMany}/58 Fourteeners!`
     }
 
     mainDiv().appendChild(h1);
@@ -97,7 +97,7 @@ const renderComplete = event => {
                     renderComplete();
                 } 
             }
-             
+
         }
         btn.addEventListener('click', handleDelete);
 
@@ -129,9 +129,9 @@ const renderList = event => {
     mainDiv().appendChild(h1);
     mainDiv().appendChild(p);
     mainDiv().appendChild(ul);
-    peaks.forEach( peaks => {
+    peaks.forEach( mtnPeak => {
 
-        const {name, elevation, rank, range, jerryLevel, numberOfRoutes} = peaks;
+        const {name, elevation, rank, range, jerryLevel, numberOfRoutes} = mtnPeak;
         
         const li = document.createElement('li');
         const div = document.createElement('div');

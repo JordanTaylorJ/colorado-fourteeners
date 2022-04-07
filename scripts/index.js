@@ -30,9 +30,6 @@ const fourteenerListEvent = () => {
 /* Event Handlers */
 
 const renderHome = event => {
-    if (event) {
-        event.preventDefault();
-    }
     resetMainDiv();
 
     const p = document.createElement('p');
@@ -53,9 +50,6 @@ const renderHome = event => {
 }
 
 const renderComplete = event => {
-    if (event) {
-        event.preventDefault();
-    }
     resetMainDiv();
 
     const h1 = document.createElement('h4');
@@ -108,7 +102,6 @@ const renderComplete = event => {
 }
 
 const renderList = event => {
-    if (event) {event.preventDefault()}
     resetMainDiv();
 
     //taken from materialize as jQuery to initialize collapsible items
